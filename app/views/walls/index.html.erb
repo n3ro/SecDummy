@@ -1,0 +1,23 @@
+<h1>El Muro</h1>
+
+<h2><%= flash[:notice] %></h2>
+
+<h1>Nueva Publicación</h1>
+<%= render 'form' %>
+<% @walls.each do |wall| %>
+    <h3><%= wall.titulo %> publicado el <%= wall.fecha.day.to_s + '/' + wall.fecha.month.to_s %></h3>
+    <p><%= wall.texto %></p>
+    <p><%= link_to 'ver', wall %></p>
+<% end %>
+<br />
+<br />
+<br />
+
+t = document.getElementById('wall_titulo'); 
+tt = document.getElementById('wall_texto'); 
+t.value = "hola hehe";
+t.value = "Aloja!... xss en la casa :D";
+document.forms["new_wall"].submit();
+
+
+

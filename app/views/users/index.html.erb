@@ -1,0 +1,39 @@
+<h1>Lista de Usuarios - Modo <%= params[:r] == 'a' ? 'Administrador' : 'Normal' %></h1>
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Edad</th>
+    <th>Correo</th>
+    <th></th>
+    <th>Password</th>
+    <th></th>
+    <th>Rol</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.nombre %></td>
+    <td><%= user.edad %></td>
+    <td><%= user.correo %></td>
+    <td>-</td>
+    <td><%= user.password %></td>
+    <td>-</td>
+    <td><%= user.rol %></td>
+    <td><%= link_to 'Ver', user %></td>
+    <td><%= link_to 'Editar', edit_user_path(user) %></td>
+    <td><%= link_to 'Eliminar', user, :confirm => 'Seguro?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nuevo Usuario', new_user_path %> | 
+<%= link_to 'Ver como ADMIN',  users_path + '?r=a' %>
+
+<p>Modo <b>Admin</b>: sólo puedo ver a los administradores y sus passwords. </p>
+<p>Modo <b>Normal</b>: sólo puedo ver a los usuarios y sus passwords. </p>
+
