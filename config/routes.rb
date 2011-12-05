@@ -1,6 +1,7 @@
 Dummy::Application.routes.draw do
-  resources :walls
 
+  resources :walls
+  resources :auth 
   resources :users
 
   # The priority is based upon order of creation:
